@@ -12,7 +12,7 @@ export interface SessionState {
 
 const initialState: AccessToken = { isFetching: false };
 
-export const accessToken = (state: AccessToken = { isFetching: false }, action: Action) => {
+export const accessToken = (state: AccessToken = initialState, action: Action) => {
     switch (action.type) {
         case "SET":
             return {

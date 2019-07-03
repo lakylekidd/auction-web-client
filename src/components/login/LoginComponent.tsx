@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { AppState } from './../../store/reducer';
-import { connect, MapStateToProps } from 'react-redux';
-import { login } from './../../store/session/actions';
-import { AccessToken } from './../../store/session/reducer';
-import { ThunkDispatch } from 'redux-thunk';
+import * as React from 'react'
+import { connect } from 'react-redux'
+import { ThunkDispatch } from 'redux-thunk'
+import { AccessToken } from '../../store/session/reducer';
+import { login } from '../../store/session/actions';
+import { AppState } from '../../store/reducer';
 
 interface State {
 }
@@ -47,7 +47,7 @@ class Login extends React.Component<Props, State> {
                             <label htmlFor="password">Password</label>
                             <input id="password" type="password" className="form-control" placeholder="Password" aria-label="Password" />
                         </div>
-                        <button className="btn btn-primary" onClick={this.props.login}>
+                        <button className="btn btn-primary" onClick={() => this.props.login("william@caminiti.com", "secret1234")}>
                             {
                                 this.props.accessToken.isFetching &&
                                 (
@@ -77,4 +77,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, any>, ownProps: OwnP
     }
 }
 
-export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
